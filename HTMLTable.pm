@@ -131,51 +131,48 @@ __END__;
 
 =head1 DESCRIPTION
 
-The DBIx::HTMLTable function takes the results of a DBI 
-query and format it as an HTML table.  The second argument 
-is a hash of options and table attributes.  Options and 
-attributes are described below.
+The HTMLTable function takes the results of a DBI query and formats it
+as an HTML table.  The second argument is a hash of options and table
+attributes.  Options and attributes are described below.
 
     &DBI::HTMLTable::HTMLTable ($data, 
 				{rs => "\n",
                                 fs => ',',
 				caption => "Caption Text"});
 
-The function DBIx::HTMLTable() uses the query output formatted as a
-multi-line string, with columns delimited by a field separator (a
-comma by default) and rows delimited by a record separator (newline by
-default).
+HTMLTable uses the query output formatted as a multi-line string, with
+columns delimited by a field separator (a comma by default) and rows
+delimited by a record separator (newline by default).
 
-DBIx::HTMLTableByRef() uses a reference to an array of array
-references, as returned by the DBI fetchall_arrayref() function and
-similar functions.  As with HTMLTable, the second argument is a hash
-of valid options and attributes, which are described briefly below.
+HTMLTableByRef takes as its first argument a reference to an array of
+array references, as returned by DBI's fetchall_arrayref() and similar
+functions.  As with HTMLTable, the second argument is a hash of valid
+options and attributes.
 
-  $data = $dbh -> selectall_arrayref( "select \* from $db" );
-  &DBI::HTMLTable::HTMLTableByRef ($data, 
-				   {width => 200,
-				    bgcolor => 'black',
-				    caption => "Text",
+  $tableref = $dbh -> selectall_arrayref( "SELECT \* FROM $db" );
+  &DBI::HTMLTable::HTMLTableByRef ($tableref, 
+				   {bgcolor => 'white',
+				    caption => "$db SELECT Query",
 				    border => 2,
 				    width => 300});
 
-An example CGI script is provided in eg/tablequery.cgi in 
-the distribution package.
+The file eg/tablequery.cgi is an example CGI script that formats
+query output for viewing in a Web browser.
 
 =head1 OPTIONS
 
-These options are used to determine how to interpret data and
-how to construct tables.
+Options are used to determine how to interpret data and how to
+construct tables.
 
 =over 4
 
 =item rs
 
-HTMLTable() only.  Character delimiter for data rows.
+HTMLTable only.  Character delimiter for data rows.
 
 =item fs 
 
-HTMLTable() only.  Character delimiter for data columns.
+HTMLTable only.  Character delimiter for data columns.
 
 =item caption
 
@@ -186,10 +183,10 @@ the string as the table's caption.
 
 =head1 TABLE ATTRIBUTES
 
-The following is a brief list of attributes which the HTML
-4.0 <TABLE> tag recognizes.  Consult the HTML 4.0 specification
-from the W3 Consortium (http://www.w3.org/) for detailed 
-information about each attribute.
+The following is a brief list of attributes that the HTML 4.0 <TABLE>
+tag recognizes.  Refer to the HTML 4.0 specification from the WWW
+Consortium (http://www.w3.org/) for detailed information about each
+attribute.
 
 =over 4
 
@@ -245,11 +242,11 @@ information about each attribute.
 
 =head1 VERSION
 
-  First release, version 0.10 (alpha).
+  Version 0.21 Mon Aug 26 08:41:04 EDT 2002
 
 =head1 AUTHOR
 
-  Robert Kiesling, rkiesling@mainmatter.com
+  Robert Allan Kiesling <rkiesling@earthlink.net
 
 =cut
   
