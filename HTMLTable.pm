@@ -1,5 +1,7 @@
 package DBIx::HTMLTable;
-$VERSION=0.23;
+$VERSION=0.24;
+
+@EXPORT_OK=qw(&HTMLTable &HTMLTableByRef);
 
 # Table Options
 my @options = qw(caption nullfield rs fs);
@@ -119,19 +121,19 @@ __END__;
 
 =head1 NAME 
 
-   HTMLTable - Make a HTML table from DBI query output.
+   HTMLTable - Create HTML table from DBI query output.
 
 =head1 SYNOPSIS
 
     use DBIx::HTMLTable;
 
-    &DBIx::HTMLTable::HTMLTable ($data, <options>);
+    HTMLTable ($data, <options>);
 
-    &DBIx::HTMLTable::HTMLTableByRef ($dataref, <options>);
+    HTMLTableByRef ($dataref, <options>);
 
 =head1 DESCRIPTION
 
-HTMLTable() formats the results of a DBI query as an HTML table.  The
+HTMLTable() formats the results of a DBI query as a HTML table.  The
 first argument is the query output formatted as a multi-line string,
 with columns delimited by a field separator (a comma by default) and
 rows delimited by a record separator (newline by default).  The second
@@ -149,18 +151,18 @@ functions.  As with HTMLTable(), the second argument is a hash of valid
 options and attributes.
 
   $tableref = $dbh -> selectall_arrayref( "SELECT \* FROM $db" );
-  &DBIx::HTMLTable::HTMLTableByRef ($tableref, 
-				   {bgcolor => 'white',
-				    caption => "$db SELECT Query",
-				    border => 2,
-				    width => 300});
+  HTMLTableByRef ($tableref, 
+                  {bgcolor => 'white',
+                   caption => "$db SELECT Query",
+                   border => 2,
+                   width => 300});
 
 The file eg/tablequery.cgi is an example CGI script that formats
 query output for viewing in a Web browser.
 
 =head1 OPTIONS
 
-Options are used to determine how to interpret data and how to
+Options determine how to interpret data and how to
 construct tables.
 
 =over 4
@@ -183,9 +185,8 @@ the string as the table's caption.
 =head1 TABLE ATTRIBUTES
 
 The following is a brief list of attributes that the HTML 4.0 <TABLE>
-tag recognizes.  Refer to the HTML 4.0 specification from the WWW
-Consortium (http://www.w3.org/) for detailed information about each
-attribute.
+tag recognizes.  Refer to the HTML 4.0 specification
+(http://www.w3.org/) for detailed information about each attribute.
 
 =over 4
 
@@ -241,11 +242,22 @@ attribute.
 
 =head1 VERSION
 
-  $Revision: 1.2 $
+Version 0.24
+
+=head1 COPYRIGHT
+
+Copyright © 2001-2004 Robert Kiesling, rkies@cpan.org.
+
+Licensed using the same terms as Perl.  Refer to the file,
+"Artistic," for information.
 
 =head1 AUTHOR
 
-  Robert Allan Kiesling <rkiesling@earthlink.net>
+Robert Kiesling, rkies@cpan.org
+
+=head1 SEE ALSO
+
+DBI(3)
 
 =cut
   
