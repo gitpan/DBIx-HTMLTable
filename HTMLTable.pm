@@ -1,5 +1,5 @@
 package DBIx::HTMLTable;
-$VERSION=0.22;
+$VERSION=0.23;
 
 # Table Options
 my @options = qw(caption nullfield rs fs);
@@ -138,7 +138,7 @@ rows delimited by a record separator (newline by default).  The second
 argument is a hash of options and table attributes.  Options and
 attributes are described below.
 
-    &DBI::HTMLTable::HTMLTable ($data, 
+    &DBIx::HTMLTable::HTMLTable ($data, 
 				{rs => "\n",
                                 fs => ',',
 				caption => "Caption Text"});
@@ -149,7 +149,7 @@ functions.  As with HTMLTable(), the second argument is a hash of valid
 options and attributes.
 
   $tableref = $dbh -> selectall_arrayref( "SELECT \* FROM $db" );
-  &DBI::HTMLTable::HTMLTableByRef ($tableref, 
+  &DBIx::HTMLTable::HTMLTableByRef ($tableref, 
 				   {bgcolor => 'white',
 				    caption => "$db SELECT Query",
 				    border => 2,
@@ -241,7 +241,7 @@ attribute.
 
 =head1 VERSION
 
-  Version 0.22 Tue Aug 27 10:31:33 EDT 2002
+  $Revision: 1.2 $
 
 =head1 AUTHOR
 
