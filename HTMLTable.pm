@@ -1,5 +1,5 @@
 package DBIx::HTMLTable;
-$VERSION='0.20';
+$VERSION=0.22;
 
 # Table Options
 my @options = qw(caption nullfield rs fs);
@@ -131,22 +131,21 @@ __END__;
 
 =head1 DESCRIPTION
 
-The HTMLTable function takes the results of a DBI query and formats it
-as an HTML table.  The second argument is a hash of options and table
-attributes.  Options and attributes are described below.
+HTMLTable() formats the results of a DBI query as an HTML table.  The
+first argument is the query output formatted as a multi-line string,
+with columns delimited by a field separator (a comma by default) and
+rows delimited by a record separator (newline by default).  The second
+argument is a hash of options and table attributes.  Options and
+attributes are described below.
 
     &DBI::HTMLTable::HTMLTable ($data, 
 				{rs => "\n",
                                 fs => ',',
 				caption => "Caption Text"});
 
-HTMLTable uses the query output formatted as a multi-line string, with
-columns delimited by a field separator (a comma by default) and rows
-delimited by a record separator (newline by default).
-
-HTMLTableByRef takes as its first argument a reference to an array of
+HTMLTableByRef() takes as its first argument a reference to an array of
 array references, as returned by DBI's fetchall_arrayref() and similar
-functions.  As with HTMLTable, the second argument is a hash of valid
+functions.  As with HTMLTable(), the second argument is a hash of valid
 options and attributes.
 
   $tableref = $dbh -> selectall_arrayref( "SELECT \* FROM $db" );
@@ -242,11 +241,11 @@ attribute.
 
 =head1 VERSION
 
-  Version 0.21 Mon Aug 26 08:41:04 EDT 2002
+  Version 0.22 Tue Aug 27 10:31:33 EDT 2002
 
 =head1 AUTHOR
 
-  Robert Allan Kiesling <rkiesling@earthlink.net
+  Robert Allan Kiesling <rkiesling@earthlink.net>
 
 =cut
   
